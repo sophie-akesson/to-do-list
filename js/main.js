@@ -8,11 +8,11 @@ class Task {
 let tasks = [];
 
 window.onload = function () {
-  taskOne = new Task("Köpa födelsedagspresent till min sambo", false);
-  taskTwo = new Task("Köpa julklappar", false);
-  taskThree = new Task("Städa", false);
-  taskFour = new Task("Klippa mig", false);
-  taskFive = new Task("Göra inlämningsuppgift", false);
+  taskOne = new Task("Buy birthday gifts for my SO", false);
+  taskTwo = new Task("Buy christmas gifts", false);
+  taskThree = new Task("Clean my apartment", false);
+  taskFour = new Task("Get a haircut", false);
+  taskFive = new Task("Do the javascript assignment", false);
 
   tasks.push(taskOne, taskTwo, taskThree, taskFour, taskFive);
 
