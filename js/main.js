@@ -148,7 +148,7 @@ function sortTasks(value) {
       return 0;
     });
   }
-  // localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
   renderHTML();
 }
