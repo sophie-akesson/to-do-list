@@ -9,15 +9,16 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <div id="wrapper">
         <div>
             <div>
                 <h1>To do</h1>
-                <form action="">
+                <form id="sortForm">
                     <div>
-                        <label>Sort: </label>
+                        <h3>Sort:</h3>
                     </div>
                     <div>
                         <input type="radio" name="sorting" value="ascending" id="sortAsc">
@@ -31,7 +32,7 @@
             </div>
             <div>
                 <h2>Current tasks</h2>
-                <form action="">
+                <form>
                     <div id="currentListWrapper">
                     </div>
                     <div>
@@ -44,7 +45,7 @@
             </div>
             <div>
                 <h2>Done tasks</h2>
-                <form action="">
+                <form>
                     <div id="doneListWrapper">
                     </div>
                 </form>

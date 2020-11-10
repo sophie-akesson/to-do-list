@@ -1,0 +1,81 @@
+@import "./variables";
+@import "./mixins";
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: $font-url;
+}
+
+body {
+  font-size: 62.5%;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  background: rgb(148, 0, 198);
+  background: linear-gradient(
+    0deg,
+    rgba(148, 0, 198, 1) 0%,
+    rgb(255, 228, 179) 100%
+  );
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  padding: $body-padding;
+}
+
+h1 {
+  font-size: $h1-size;
+  margin: $h1-margin;
+}
+
+h2 {
+  font-size: $h2-size;
+}
+
+h3 {
+  font-size: $h3-size;
+  margin: $h3-margin;
+}
+
+#wrapper {
+  background: $wrapper-color;
+  padding: $wrapper-padding;
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+    max-width: 600px;
+  }
+}
+
+#sortForm {
+    display: flex;
+}
+
+label {
+  font-size: $text-size;
+}
+
+ul {
+  padding: $ul-padding;
+}
+
+li {
+  font-size: $text-size;
+  list-style-type: none;
+  margin-top: $li-margin;
+
+  input {
+    margin-right: $input-margin;
+  }
+}
+
+span {
+  margin-left: $span-margin;
+}
+
+span:hover {
+    color: $span-color;
+}

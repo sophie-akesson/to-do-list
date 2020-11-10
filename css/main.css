@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box; }
+
+@font-face {
+  font-family: Montserrat;
+  src: url("../assets/Montserrat-Light.woff"); }
+
+body {
+  font-size: 62.5%;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  background: #9400c6;
+  background: linear-gradient(0deg, #9400c6 0%, #ffe4b3 100%);
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 1rem; }
+
+h1 {
+  font-size: 3rem;
+  margin: 1rem; }
+
+h2 {
+  font-size: 2rem; }
+
+h3 {
+  font-size: 1.7rem;
+  margin: 0; }
+
+#wrapper {
+  background: white;
+  padding: 2rem; }
+
+@media (min-width: 768px) {
+  #wrapper {
+    max-width: 600px; } }
+
+#sortForm {
+  display: flex; }
+
+label {
+  font-size: 1rem; }
+
+ul {
+  padding: 0; }
+
+li {
+  font-size: 1rem;
+  list-style-type: none;
+  margin-top: 1rem; }
+  li input {
+    margin-right: 0.5rem; }
+
+span {
+  margin-left: 0.5rem; }
+
+span:hover {
+  color: red; }
