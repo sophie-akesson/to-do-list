@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do</title>
+    <script
+      src="https://kit.fontawesome.com/0ae8c6af08.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div>
+            <div>
+                <h2>Current tasks</h2>
+                <form action="">
+                    <div>
+                        <label>Sort: </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="sorting" value="ascending" id="currentSortAsc">
+                        <label for="currentSortAsc">Ascending</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="sorting" value="descending" id="currentSortDesc">
+                        <label for="currentSortDesc">Descending</label>
+                    </div>
+                    <div id="currentListWrapper">
+                    </div>
+                    <div>
+                        <input type="text" value="New task" id="newTaskValue">
+                    </div>
+                    <div>
+                        <button id="addTaskButton" type="button">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <h2>Done tasks</h2>
+                <form action="">
+                    <div>
+                        <label>Sort: </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="sorting" value="ascending" id="doneSortAsc">
+                        <label for="doneSortAsc">Ascending</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="sorting" value="descending" id="doneSortDesc">
+                        <label for="doneSortDesc">Descending</label>
+                    </div>
+                    <div id="doneListWrapper">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
