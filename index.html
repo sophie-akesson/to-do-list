@@ -14,19 +14,24 @@
     <div id="wrapper">
         <div>
             <div>
-                <h2>Current tasks</h2>
+                <h1>To do</h1>
                 <form action="">
                     <div>
                         <label>Sort: </label>
                     </div>
                     <div>
-                        <input type="radio" name="sorting" value="ascending" id="currentSortAsc">
-                        <label for="currentSortAsc">Ascending</label>
+                        <input type="radio" name="sorting" value="ascending" id="sortAsc">
+                        <label for="sortAsc">Ascending</label>
                     </div>
                     <div>
-                        <input type="radio" name="sorting" value="descending" id="currentSortDesc">
-                        <label for="currentSortDesc">Descending</label>
+                        <input type="radio" name="sorting" value="descending" id="sortDesc">
+                        <label for="sortDesc">Descending</label>
                     </div>
+                </form>
+            </div>
+            <div>
+                <h2>Current tasks</h2>
+                <form action="">
                     <div id="currentListWrapper">
                     </div>
                     <div>
@@ -40,17 +45,6 @@
             <div>
                 <h2>Done tasks</h2>
                 <form action="">
-                    <div>
-                        <label>Sort: </label>
-                    </div>
-                    <div>
-                        <input type="radio" name="sorting" value="ascending" id="doneSortAsc">
-                        <label for="doneSortAsc">Ascending</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="sorting" value="descending" id="doneSortDesc">
-                        <label for="doneSortDesc">Descending</label>
-                    </div>
                     <div id="doneListWrapper">
                     </div>
                 </form>

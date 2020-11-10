@@ -23,10 +23,20 @@ window.onload = function () {
   }
 
   let addTaskButton = document.getElementById("addTaskButton");
+  let sortAsc = document.getElementById("sortAsc");
+  let sortDesc = document.getElementById("sortDesc");
 
   addTaskButton.addEventListener("click", () => {
     let task = document.getElementById("newTaskValue").value;
-    addTaskFunction(task);
+    addTask(task);
+  });
+
+  sortAsc.addEventListener("click", () => {
+    sortTasks(sortAsc.value);
+  });
+
+  sortDesc.addEventListener("click", () => {
+    sortTasks(sortDesc.value);
   });
 
   renderHTML();
@@ -71,10 +81,10 @@ function renderHTML() {
     }
 
     checkBoxElement.addEventListener("click", () => {
-      changeStateFunction(tasks[i]);
+      changeState(tasks[i]);
     });
     removeIconElement.addEventListener("click", () => {
-      removeTaskFunction(tasks[i]);
+      removeTask(tasks[i]);
     });
   }
 
@@ -82,7 +92,7 @@ function renderHTML() {
   doneListDiv.appendChild(doneList);
 }
 
-function changeStateFunction(object) {
+function changeState(object) {
   if (object.completed === false) {
     object.completed = true;
   } else {
@@ -93,7 +103,7 @@ function changeStateFunction(object) {
   renderHTML();
 }
 
-function removeTaskFunction(object) {
+function removeTask(object) {
   for (let i = 0; i < tasks.length; i++) {
     if (object.name === tasks[i].name) {
       tasks.splice(i, 1);
@@ -101,10 +111,9 @@ function removeTaskFunction(object) {
     }
   }
   renderHTML();
-  console.log(tasks);
 }
 
-function addTaskFunction(task) {
+function addTask(task) {
   let newTask = new Task(task, false);
   tasks.push(newTask);
 
@@ -113,6 +122,33 @@ function addTaskFunction(task) {
   renderHTML();
 }
 
-function sortTasks() {
-    console.log("Sorted!");
+function sortTasks(value) {
+  if (value === "ascending") {
+    tasks.sort((a, b) => {
+      let one = a.name.toLowerCase();
+      let two = b.name.toLowerCase();
+      if (one < two) {
+        return -1;
+      }
+      if (one > two) {
+        return 1;
+      }
+      return 0;
+    });
+  } else {
+    tasks.sort((a, b) => {
+      let one = a.name.toLowerCase();
+      let two = b.name.toLowerCase();
+      if (one > two) {
+        return -1;
+      }
+      if (one < two) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+  // localStorage.setItem("tasks", JSON.stringify(tasks));
+
+  renderHTML();
 }
