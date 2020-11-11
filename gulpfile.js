@@ -8,14 +8,8 @@ gulp.task("default", function (){
     return watch("scss/*.scss", function () {
     gulp.src("scss/*.scss")
     .pipe(sass())
-    .pipe(gulp.dest("css"))
-    });
-});
-
-gulp.task("prod", function (){
-    return gulp.src("scss/*.scss")
-    .pipe(sass())
     .pipe(minify())
     .pipe(rename("main.min.css"))
-    .pipe(gulp.dest("dist/css")); 
+    .pipe(gulp.dest("css"))
+    });
 });
