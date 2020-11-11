@@ -27,7 +27,7 @@ window.onload = function () {
   let sortDesc = document.getElementById("sortDesc");
 
   addTaskButton.addEventListener("click", () => {
-    let task = document.getElementById("newTaskValue").value;
+    let task = document.getElementById("newTaskInput").value;
     addTask(task);
   });
 
@@ -116,6 +116,8 @@ function removeTask(object) {
 function addTask(task) {
   let newTask = new Task(task, false);
   tasks.push(newTask);
+
+  document.getElementById("newTaskInput").value = "New task";
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
 
