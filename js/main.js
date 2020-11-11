@@ -57,27 +57,37 @@ function renderHTML() {
 
   for (let i = 0; i < tasks.length; i++) {
     let liElement = document.createElement("li");
+    
+    let labelElement = document.createElement("label");
+    labelElement.innerText = tasks[i].name;
+    labelElement.htmlFor = "toDo" + i;
+    labelElement.className = "taskLabel";
 
     let checkBoxElement = document.createElement("input");
     checkBoxElement.type = "checkbox";
     checkBoxElement.value = tasks[i].name;
     checkBoxElement.id = "toDo" + i;
 
-    let labelElement = document.createElement("label");
-    labelElement.innerText = tasks[i].name;
-    labelElement.htmlFor = "toDo" + i;
+    let checkBoxSpan = document.createElement("span");
+    checkBoxSpan.className = "checkBoxSpan";
 
     let removeIconElement = document.createElement("span");
-    removeIconElement.className = "fas fa-times-circle fa-lg ml-auto m-2";
+    removeIconElement.className = "fas fa-times-circle fa-lg";
 
-    liElement.appendChild(checkBoxElement);
     liElement.appendChild(labelElement);
+    labelElement.appendChild(checkBoxElement);
+    labelElement.appendChild(checkBoxSpan);
     liElement.appendChild(removeIconElement);
+
+    let line = document.createElement("hr");
 
     if (tasks[i].completed === false) {
       currentList.appendChild(liElement);
+      currentList.appendChild(line);
     } else {
+      checkBoxElement.checked = "true";
       doneList.appendChild(liElement);
+      doneList.appendChild(line);
     }
 
     checkBoxElement.addEventListener("click", () => {
@@ -100,7 +110,22 @@ function changeState(object) {
   }
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
-  renderHTML();
+
+  let liElements = wrapper.querySelectorAll("li");
+
+  for (let item of liElements) {
+    let taskText = item.innerText;
+
+    if (object.name === taskText) {
+      item.style.opacity = 0;
+
+      setTimeout(() => {
+        item.innerHTML = "";
+        item.remove();
+        renderHTML();
+      }, 400);
+    }
+  }
 }
 
 function removeTask(object) {
@@ -110,7 +135,22 @@ function removeTask(object) {
       localStorage.setItem("tasks", JSON.stringify(tasks));
     }
   }
-  renderHTML();
+
+  let liElements = wrapper.querySelectorAll("li");
+
+  for (let item of liElements) {
+    let taskText = item.innerText;
+
+    if (object.name === taskText) {
+      item.style.opacity = 0;
+
+      setTimeout(() => {
+        item.innerHTML = "";
+        item.remove();
+        renderHTML();
+      }, 400);
+    }
+  }
 }
 
 function addTask(task) {

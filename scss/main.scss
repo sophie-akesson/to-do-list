@@ -1,5 +1,4 @@
 @import "./variables";
-@import "./mixins";
 
 * {
   box-sizing: border-box;
@@ -13,12 +12,9 @@
 body {
   font-size: 62.5%;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
-  background: rgb(148, 0, 198);
-  background: linear-gradient(
-    0deg,
-    rgba(148, 0, 198, 1) 0%,
-    rgb(255, 228, 179) 100%
-  );
+  background-image: $background-url;
+  background-position: center;
+  background-size: cover;
   background-attachment: fixed;
   display: flex;
   justify-content: center;
@@ -27,7 +23,8 @@ body {
 
 h1 {
   font-size: $h1-size;
-  margin: $h1-margin;
+  margin: 0;
+  margin-bottom: $h1-margin;
 }
 
 h2 {
@@ -36,12 +33,20 @@ h2 {
 
 h3 {
   font-size: $h3-size;
-  margin: $h3-margin;
+  margin: 0;
+  margin-right: $h3-margin;
+}
+
+h1,
+h2,
+h3 {
+  color: $font-color;
 }
 
 #wrapper {
   background: $wrapper-color;
   padding: $wrapper-padding;
+  box-shadow: $box-shadow;
 }
 
 @media (min-width: 768px) {
@@ -50,8 +55,18 @@ h3 {
   }
 }
 
-#sortForm {
-    display: flex;
+@media (max-width: 420px) {
+  #wrapper {
+    min-height: 94vh;
+  }
+}
+
+#sortForm > div {
+  padding: $sort-padding;
+}
+
+#currentListWrapper {
+  margin-bottom: $currentList-margin;
 }
 
 label {
@@ -66,16 +81,120 @@ li {
   font-size: $text-size;
   list-style-type: none;
   margin-top: $li-margin;
+  margin-bottom: $li-margin;
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.4s linear;
 
-  input {
-    margin-right: $input-margin;
+  label {
+    margin-right: $label-margin;
   }
 }
 
-span {
+hr {
+  border: none;
+  height: 1px;
+  background-color: $hr-color;
+}
+
+.taskLabel {
+  padding-left: $tasklabel-padding;
+  margin-right: $label-margin;
+  display: block;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.taskLabel input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkBoxSpan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $checkbox-size;
+  height: $checkbox-size;
+  margin-right: $checkbox-margin;
+  border: 1px solid $checkbox-color;
+}
+
+.taskLabel:hover input ~ .checkBoxSpan {
+  background-color: $checkbox-background-color;
+  border: 1px solid $checkbox-background-color;
+}
+
+.taskLabel input:checked ~ .checkBoxSpan {
+  background-color: $checkbox-checked-background-color;
+  border: 1px solid $checkbox-checked-background-color;
+}
+
+.checkBoxSpan:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.taskLabel input:checked ~ .checkBoxSpan:after {
+  display: block;
+}
+
+.taskLabel .checkBoxSpan:after {
+  left: 0.2rem;
+  top: 0;
+  width: 0.25rem;
+  height: 0.5rem;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.fa-times-circle {
+  color: $span-color;
   margin-left: $span-margin;
 }
 
-span:hover {
-    color: $span-color;
+.fa-times-circle:hover {
+  color: $span-hover;
+}
+
+#newTaskInput {
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  width: $newTask-size;
+  padding: $newTask-padding;
+  margin-right: $newTask-margin;
+  background-color: $newTask-background-color;
+  border: 0;
+  border-bottom: 1px solid $newTask-border-color;
+  outline: none;
+}
+
+#newTaskInput:focus {
+  background-color: $newTask-background-active;
+  border: 0;
+  border-bottom: 1px solid $newTask-border-active;
+}
+
+#newTaskInput + button {
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  padding: $button-padding;
+  border: 0;
+  border-bottom: 1px solid $button-background-color;
+  background-color: $button-background-color;
+  color: $button-color;
+  box-shadow: $button-box-shadow;
+}
+
+#newTaskInput + button:hover {
+  border-bottom: 1px solid $button-border;
+  background-color: $button-background-hover;
+  color: $button-color-hover;
+  box-shadow: $button-box-shadow;
 }
