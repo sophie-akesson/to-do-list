@@ -1,54 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To do</title>
     <script
       src="https://kit.fontawesome.com/0ae8c6af08.js"
       crossorigin="anonymous"
     ></script>
     <script src="js/main.js"></script>
-    <link rel="stylesheet" href="css/main.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/main.min.css" />
+  </head>
+  <body>
     <div id="wrapper">
+      <div>
         <div>
+          <h1>To do</h1>
+          <form id="sortForm">
             <div>
-                <h1>To do</h1>
-                <form id="sortForm">
-                    <div>
-                        <h3>Sort:</h3>
-                    </div>
-                    <div>
-                        <input type="radio" name="sorting" value="ascending" id="sortAsc">
-                        <label for="sortAsc">Ascending</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="sorting" value="descending" id="sortDesc">
-                        <label for="sortDesc">Descending</label>
-                    </div>
-                </form>
+              <h3>Sort:</h3>
             </div>
             <div>
-                <h2>Current tasks</h2>
-                <form>
-                    <div id="currentListWrapper">
-                    </div>
-                    <div>
-                        <input type="text" value="New task" id="newTaskInput">
-                        <button id="addTaskButton" type="button">Add</button>
-                    </div>
-                </form>
+              <label class="sortLabel" for="sortAsc"
+                ><input
+                  type="radio"
+                  name="sorting"
+                  value="ascending"
+                  id="sortAsc"
+                /><span class="sortSpan"></span>Ascending</label
+              >
             </div>
             <div>
-                <h2>Done tasks</h2>
-                <form>
-                    <div id="doneListWrapper">
-                    </div>
-                </form>
+              <label class="sortLabel" for="sortDesc"
+                ><input
+                  type="radio"
+                  name="sorting"
+                  value="descending"
+                  id="sortDesc"
+                  class="sortRadioBtn"
+                /><span class="sortSpan"></span>Descending</label
+              >
             </div>
+          </form>
         </div>
+        <div>
+          <h2>Current tasks</h2>
+          <form>
+            <div id="currentListWrapper"></div>
+            <div id="newTaskWrapper">
+              <input type="text" value="New task" id="newTaskInput" />
+              <button id="addTaskButton" type="button">Add</button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <h2>Done tasks</h2>
+          <form>
+            <div id="doneListWrapper"></div>
+          </form>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

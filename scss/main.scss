@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./mixins";
 
 * {
   box-sizing: border-box;
@@ -98,52 +99,52 @@ hr {
   background-color: $hr-color;
 }
 
-.taskLabel {
-  padding-left: $tasklabel-padding;
-  margin-right: $label-margin;
+.taskLabel,
+.sortLabel {
+  @include inputLabel;
+}
+
+.taskLabel input,
+.sortLabel input {
+  @include hideInput;
+}
+
+.checkBoxSpan,
+.sortSpan {
+  @include inputSpan;
+}
+
+.sortSpan {
+  border-radius: 50%;
+}
+
+.taskLabel:hover input ~ .checkBoxSpan,
+.sortLabel:hover input ~ .sortSpan {
+  @include inputHover;
+}
+
+.taskLabel input:checked ~ .checkBoxSpan,
+.sortLabel input:checked ~ .sortSpan {
+  @include inputChecked;
+}
+
+.checkBoxSpan:after,
+.sortSpan:after {
+  @include hiddenIndicator;
+}
+
+.taskLabel input:checked ~ .checkBoxSpan:after,
+.sortLabel input:checked ~ .sortSpan:after {
   display: block;
-  position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
 }
 
-.taskLabel input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.checkBoxSpan {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: $checkbox-size;
-  height: $checkbox-size;
-  margin-right: $checkbox-margin;
-  border: 1px solid $checkbox-color;
-}
-
-.taskLabel:hover input ~ .checkBoxSpan {
-  background-color: $checkbox-background-color;
-  border: 1px solid $checkbox-background-color;
-}
-
-.taskLabel input:checked ~ .checkBoxSpan {
-  background-color: $checkbox-checked-background-color;
-  border: 1px solid $checkbox-checked-background-color;
-}
-
-.checkBoxSpan:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.taskLabel input:checked ~ .checkBoxSpan:after {
-  display: block;
+.sortLabel .sortSpan:after {
+  left: 0.2rem;
+  top: 0.2rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: white;
+  border-radius: 50%;
 }
 
 .taskLabel .checkBoxSpan:after {
@@ -165,9 +166,14 @@ hr {
   color: $span-hover;
 }
 
+#newTaskWrapper {
+  display: flex;
+}
+
 #newTaskInput {
   font-family: Montserrat, Arial, Helvetica, sans-serif;
-  width: $newTask-size;
+  // width: $newTask-size;
+  flex-grow: 100;
   padding: $newTask-padding;
   margin-right: $newTask-margin;
   background-color: $newTask-background-color;
@@ -197,4 +203,8 @@ hr {
   background-color: $button-background-hover;
   color: $button-color-hover;
   box-shadow: $button-box-shadow;
+}
+
+#newTaskInput + button:focus {
+  outline: 0;
 }

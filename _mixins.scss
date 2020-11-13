@@ -1,0 +1,43 @@
+@mixin inputLabel {
+  padding-left: $tasklabel-padding;
+  margin-right: $label-margin;
+  display: block;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+@mixin hideInput {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+@mixin inputSpan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $checkbox-size;
+  height: $checkbox-size;
+  margin-right: $checkbox-margin;
+  border: 1px solid $checkbox-color;
+}
+
+@mixin hiddenIndicator {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+@mixin inputHover {
+  background-color: $checkbox-background-color;
+  border: 1px solid $checkbox-background-color;
+}
+
+@mixin inputChecked {
+  background-color: $checkbox-checked-background-color;
+  border: 1px solid $checkbox-checked-background-color;
+}
