@@ -71,35 +71,53 @@ function renderHTML() {
     let checkBoxSpan = document.createElement("span");
     checkBoxSpan.className = "checkBoxSpan";
 
-    let removeIconElement = document.createElement("span");
-    removeIconElement.className = "fas fa-times-circle fa-lg";
+    let removeIconSpan = document.createElement("span");
+    removeIconSpan.className = "fas fa-times-circle fa-lg";
 
     liElement.appendChild(labelElement);
     labelElement.appendChild(checkBoxElement);
     labelElement.appendChild(checkBoxSpan);
-    liElement.appendChild(removeIconElement);
+    liElement.appendChild(removeIconSpan);
 
-    let line = document.createElement("hr");
+    let lineElement = document.createElement("hr");
 
     if (tasks[i].completed === false) {
       currentList.appendChild(liElement);
-      currentList.appendChild(line);
+      currentList.appendChild(lineElement);
     } else {
       checkBoxElement.checked = "true";
       doneList.appendChild(liElement);
-      doneList.appendChild(line);
+      doneList.appendChild(lineElement);
     }
 
     checkBoxElement.addEventListener("click", () => {
       changeState(tasks[i]);
     });
-    removeIconElement.addEventListener("click", () => {
+    removeIconSpan.addEventListener("click", () => {
       removeTask(tasks[i]);
     });
   }
 
   currentListDiv.appendChild(currentList);
   doneListDiv.appendChild(doneList);
+}
+
+function fadeHTML(object) {
+  let liElements = wrapper.querySelectorAll("li");
+
+  for (let item of liElements) {
+    let taskText = item.innerText;
+
+    if (object.name === taskText) {
+      item.style.opacity = 0;
+
+      setTimeout(() => {
+        item.innerHTML = "";
+        item.remove();
+        renderHTML();
+      }, 400);
+    }
+  }
 }
 
 function changeState(object) {
@@ -111,21 +129,7 @@ function changeState(object) {
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
 
-  let liElements = wrapper.querySelectorAll("li");
-
-  for (let item of liElements) {
-    let taskText = item.innerText;
-
-    if (object.name === taskText) {
-      item.style.opacity = 0;
-
-      setTimeout(() => {
-        item.innerHTML = "";
-        item.remove();
-        renderHTML();
-      }, 400);
-    }
-  }
+  fadeHTML(object);
 }
 
 function removeTask(object) {
@@ -136,21 +140,7 @@ function removeTask(object) {
     }
   }
 
-  let liElements = wrapper.querySelectorAll("li");
-
-  for (let item of liElements) {
-    let taskText = item.innerText;
-
-    if (object.name === taskText) {
-      item.style.opacity = 0;
-
-      setTimeout(() => {
-        item.innerHTML = "";
-        item.remove();
-        renderHTML();
-      }, 400);
-    }
-  }
+  fadeHTML(object);
 }
 
 function addTask(task) {
@@ -166,25 +156,25 @@ function addTask(task) {
 
 function sortTasks(value) {
   if (value === "ascending") {
-    tasks.sort((a, b) => {
-      let one = a.name.toLowerCase();
-      let two = b.name.toLowerCase();
-      if (one < two) {
+    tasks.sort((firstObject, secondObject) => {
+      let firstObjectName = firstObject.name.toLowerCase();
+      let secondObjectName = secondObject.name.toLowerCase();
+      if (firstObjectName < secondObjectName) {
         return -1;
       }
-      if (one > two) {
+      if (firstObjectName > secondObjectName) {
         return 1;
       }
       return 0;
     });
   } else {
-    tasks.sort((a, b) => {
-      let one = a.name.toLowerCase();
-      let two = b.name.toLowerCase();
-      if (one > two) {
+    tasks.sort((firstObject, secondObject) => {
+      let firstObjectName = firstObject.name.toLowerCase();
+      let secondObjectName = secondObject.name.toLowerCase();
+      if (firstObjectName > secondObjectName) {
         return -1;
       }
-      if (one < two) {
+      if (firstObjectName < secondObjectName) {
         return 1;
       }
       return 0;
