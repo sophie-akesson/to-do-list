@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="A simple to do list using vanilla Javascript." />
     <title>To do</title>
     <script
       src="https://kit.fontawesome.com/0ae8c6af08.js"
@@ -48,7 +49,8 @@
           <form>
             <div id="currentListWrapper"></div>
             <div id="newTaskWrapper">
-              <input type="text" value="New task" id="newTaskInput" />
+              <label id="newTaskLabel" for="newTaskInput">New task:</label>
+              <input type="text" value=" " id="newTaskInput" />
               <button id="addTaskButton" type="button">Add</button>
             </div>
           </form>

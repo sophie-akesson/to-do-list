@@ -8,6 +8,7 @@
 @font-face {
   font-family: Montserrat;
   src: $font-url;
+  font-display: swap;
 }
 
 body {
@@ -32,7 +33,8 @@ h2 {
   font-size: $h2-size;
 }
 
-h3 {
+h3,
+#newTaskLabel {
   font-size: $h3-size;
   margin: 0;
   margin-right: $h3-margin;
@@ -40,7 +42,8 @@ h3 {
 
 h1,
 h2,
-h3 {
+h3,
+#newTaskLabel {
   color: $font-color;
 }
 
@@ -83,20 +86,16 @@ li {
   list-style-type: none;
   margin-top: $li-margin;
   margin-bottom: $li-margin;
+  padding-bottom: $li-padding;
   display: flex;
   align-items: center;
   opacity: 1;
   transition: opacity 0.4s linear;
+  border-bottom: 1px solid $li-border-color;
 
   label {
     margin-right: $label-margin;
   }
-}
-
-hr {
-  border: none;
-  height: 1px;
-  background-color: $hr-color;
 }
 
 .taskLabel,
@@ -168,6 +167,12 @@ hr {
 
 #newTaskWrapper {
   display: flex;
+  flex-wrap: wrap;
+}
+
+#newTaskLabel {
+  font-weight: bold;
+  width: 100%;
 }
 
 #newTaskInput {

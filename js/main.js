@@ -79,15 +79,11 @@ function renderHTML() {
     labelElement.appendChild(checkBoxSpan);
     liElement.appendChild(removeIconSpan);
 
-    let lineElement = document.createElement("hr");
-
     if (tasks[i].completed === false) {
       currentList.appendChild(liElement);
-      currentList.appendChild(lineElement);
     } else {
       checkBoxElement.checked = "true";
       doneList.appendChild(liElement);
-      doneList.appendChild(lineElement);
     }
 
     checkBoxElement.addEventListener("click", () => {
@@ -146,8 +142,6 @@ function removeTask(object) {
 function addTask(task) {
   let newTask = new Task(task, false);
   tasks.push(newTask);
-
-  document.getElementById("newTaskInput").value = "New task";
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
 
