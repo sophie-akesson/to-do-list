@@ -25,10 +25,25 @@ window.onload = function () {
   let addTaskButton = document.getElementById("addTaskButton");
   let sortAsc = document.getElementById("sortAsc");
   let sortDesc = document.getElementById("sortDesc");
+  let taskInput = document.getElementById("newTaskInput");
 
   addTaskButton.addEventListener("click", () => {
-    let task = document.getElementById("newTaskInput").value;
-    addTask(task);
+    addTask(taskInput.value);
+  });
+
+  taskInput.addEventListener("focusin", ()=> {
+    taskInput.value = "";
+  });
+
+  taskInput.addEventListener("focusout", ()=> {
+    taskInput.value = "New task";
+  });
+
+  taskInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addTask(taskInput.value);
+    }
   });
 
   sortAsc.addEventListener("click", () => {
@@ -57,7 +72,7 @@ function renderHTML() {
 
   for (let i = 0; i < tasks.length; i++) {
     let liElement = document.createElement("li");
-    
+
     let labelElement = document.createElement("label");
     labelElement.innerText = tasks[i].name;
     labelElement.htmlFor = "toDo" + i;
