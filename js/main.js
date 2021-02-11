@@ -36,7 +36,9 @@ window.onload = function () {
   });
 
   taskInput.addEventListener("focusout", ()=> {
-    taskInput.value = "New task";
+    if (taskInput.value === "") {
+      taskInput.value = "New task";
+    }
   });
 
   taskInput.addEventListener("keydown", (e) => {
