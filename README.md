@@ -2,6 +2,9 @@
 
 A basic to do list using vanilla JS. This is the first assignment in Javascript at Medieinstitutet. 
 
+## Demo
+https://sophie-todolist-vanillajs.netlify.app/
+
 ## Functionality
 
 - 6 predefined tasks
