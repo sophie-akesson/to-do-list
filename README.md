@@ -5,6 +5,9 @@ A basic to do list using vanilla JS. This is the first assignment in Javascript 
 ## Demo
 https://sophie-todolist-vanillajs.netlify.app/
 
+## Credit
+Big thanks to [rmRadev at Deviantart](https://www.deviantart.com/rmradev) for the background image.
+
 ## Functionality
 
 - 6 predefined tasks
